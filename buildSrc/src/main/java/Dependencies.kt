@@ -35,10 +35,22 @@ object Dependencies {
 
     const val mockwebserver = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebserverVersion}"
 
-    const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesVersion}"
+    const val coroutinesTest =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesVersion}"
 
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
     const val mockkAndroid = "io.mockk:mockk-android:${Versions.mockk}"
     const val mockitoAndroid = "org.mockito:mockito-android:${Versions.mockito}"
 
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val jUnitKtx = "androidx.test.ext:junit-ktx:${Versions.jUnitKtxVersion}"
+    const val espresso = "androidx.test.espresso:espresso-contrib:${Versions.espressoVersion}"
+    const val jUnit = "junit:junit:${Versions.jUnitVersion}"
+    const val turbine = "app.cash.turbine:turbine:${Versions.turbineVersion}"
+    const val archCoreTesting = "androidx.arch.core:core-testing:${Versions.archCoreTestingVersion}"
+    const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockitoKotlinVersion}"
+    const val espressoKotlin = "androidx.test.espresso:espresso-core:${Versions.espressoVersion}"
+    const val testRunner = "androidx.test:runner:${Versions.testRunnerVersion}"
+    const val testRules = "androidx.test:rules:${Versions.testRunnerVersion}"
+    const val fragmentTesting = "androidx.fragment:fragment-testing:${Versions.fragmentTesting}"
 }

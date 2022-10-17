@@ -36,5 +36,14 @@ object Versions {
 
     const val mockk = "1.12.0"
     const val mockito = "2.18.3"
+    const val glide = "4.14.2"
+    const val jUnitKtxVersion = "1.1.3"
+    const val espressoVersion = "3.4.0"
+    const val jUnitVersion = "4.13.2"
+    const val turbineVersion = "0.11.0"
+    const val archCoreTestingVersion = "2.1.0"
+    const val mockitoKotlinVersion = "3.2.0"
+    const val testRunnerVersion = "1.4.0"
+    const val fragmentTesting = "1.5.3"
 
 }
