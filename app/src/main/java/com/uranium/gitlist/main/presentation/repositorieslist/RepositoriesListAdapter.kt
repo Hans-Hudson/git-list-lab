@@ -9,7 +9,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.uranium.gitlist.R
 import com.uranium.gitlist.databinding.ItemInvoiceRepositoryBinding
 
-internal class RepositoriesListAdapter2(private val repositoryListener: RepositoryListener) :
+internal class RepositoriesListAdapter(private val repositoryListener: RepositoryListener) :
     RecyclerView.Adapter<RepositoriesListViewHolder>() {
 
     private var currentList = mutableListOf<GitRepositoryState>()

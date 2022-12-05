@@ -8,9 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.uranium.gitlist.R
 import com.uranium.gitlist.databinding.FragmentRepositoriesListBinding
+import com.uranium.gitlist.main.presentation.repositorydetail.RepositoryDetailFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 internal typealias RepositoryListener = (id: Int) -> Unit
 
@@ -20,9 +21,12 @@ class RepositoriesListFragment : Fragment() {
     private var loading = false
     private lateinit var binding: FragmentRepositoriesListBinding
     private val viewModel: RepositoriesListViewModel by viewModel()
-    private val adapter: RepositoriesListAdapter2 by lazy {
-        RepositoriesListAdapter2() {
+    private val adapter: RepositoriesListAdapter by lazy {
+        RepositoriesListAdapter() {
             Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.container, RepositoryDetailFragment.newInstance())
+                .commit()
         }
     }
 
@@ -59,14 +63,14 @@ class RepositoriesListFragment : Fragment() {
 
     private fun fillRepositoriesList(repositoriesList: List<GitRepositoryState>?) {
         binding.repositoriesList.layoutManager = layoutManager
-            repositoriesList?.let { adapter.updateList(it) }
+        repositoriesList?.let { adapter.updateList(it) }
     }
 
     private fun setupEndlessList() {
         binding.repositoriesList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (layoutManager.findLastVisibleItemPosition() == adapter.itemCount - 1) {
-                        viewModel.getKotlinRepositories()
+                    viewModel.getKotlinRepositories()
                 }
             }
         })
