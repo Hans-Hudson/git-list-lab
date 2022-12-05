@@ -11,7 +11,7 @@ class HeaderInterceptor : Interceptor {
             request()
                 .newBuilder()
                 .url(url)
-                .addHeader("Authorization", BuildConfig.GIT_TOKEN)
+//                .addHeader("Authorization", BuildConfig.GIT_TOKEN)
                 .addHeader("Accept", "application/vnd.github+json")
                 .build()
         )
