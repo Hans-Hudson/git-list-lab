@@ -8,16 +8,16 @@ import com.uranium.gitlist.main.presentation.repositorieslist.RepositoriesListFr
 
 internal class MainGitListActivity : AppCompatActivity(R.layout.activity_main_git_list) {
 
-    lateinit var binding: ActivityMainGitListBinding
+    private val binding: ActivityMainGitListBinding by lazy {
+        ActivityMainGitListBinding.bind(findViewById(R.id.mainGitListRoot))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainGitListBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main_git_list)
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, RepositoriesListFragment.newInstance())
+                .replace(binding.container.id, RepositoriesListFragment.newInstance())
                 .commit()
         }
     }
