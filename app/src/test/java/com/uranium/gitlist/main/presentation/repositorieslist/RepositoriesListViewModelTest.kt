@@ -1,10 +1,10 @@
 package com.uranium.gitlist.main.presentation.repositorieslist
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.uranium.gitlist.main.domain.usecase.GetKotlinRepositoriesUseCase
 import com.uranium.gitlist.main.presentation.repositorieslist.RepositoriesListViewModelTestStubs.gitListRepository
 import com.uranium.gitlist.main.presentation.repositorieslist.RepositoriesListViewModelTestStubs.gitRepositoryState
+import com.uranium.gitlist.main.setup.LocalTestRule
 import com.uranium.gitlist.main.setup.TestCoroutineRule
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -16,16 +16,15 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
-
 @RunWith(MockitoJUnitRunner::class)
 @ExperimentalCoroutinesApi
 internal class RepositoriesListViewModelTest {
 
     @get:Rule
-    val testCoroutineRule = TestCoroutineRule()
+    val localTestRule = LocalTestRule()
 
     @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
+    val testCoroutineRule = TestCoroutineRule()
 
     private val getKotlinRepositoriesUseCase: GetKotlinRepositoriesUseCase = mockk(relaxed = true)
 
@@ -35,7 +34,7 @@ internal class RepositoriesListViewModelTest {
 
     @Test
     fun `when RepositoriesListViewModel is created it should call getKotlinRepositoriesUseCase and when it returns successfully fill the state`() =
-        runTest {
+        runTest() {
             coEvery { getKotlinRepositoriesUseCase(1) } returns gitListRepository
 
             viewModel = createViewModel()
